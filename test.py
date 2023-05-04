@@ -11,6 +11,8 @@ while True:
     ret,img=cap.read()
     img=cv2.resize(img,(680,460))
     bbox, label, conf = yolo.detect_objects(img)
+    if(len(label) != 0):
+        print("Detect: " + str(label))
     img1=yolo.draw_bbox(img, bbox, label, conf)
     cv2.imshow("img1",img)
     if cv2.waitKey(1)&0xFF==27:
